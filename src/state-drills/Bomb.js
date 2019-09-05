@@ -6,31 +6,51 @@ class Bomb extends Component{
         count: 0,
     };
 
-    let interval = setInterval(time, 1000)
+    componentDidMount(){
+        this.interval = setInterval(() => {
+            // eslint-disable-next-line
+            this.setState({
+                count: this.state.count + 1
+            })
+            
+        }, 1000)
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.interval)
+    }
+
+
+
 
     display()
     {
         const {count} = this.state
-        if(count % 2 === 0)
-        {
-            return 'tick'
-        }
-        else if(count % 2 != 0)
-        {
-            return 'tock'
-        }
-        else if (count >= 8){
+        if (count >= 8){
             clearInterval(this.interval)
             return 'BOOM!!!'
         }
+        else if(count % 2 === 0)
+        {
+            return 'tick'
+        }
+        else
+        {
+            return 'tock'
+        }
+        
+        
     }
 
     render(){
 
         return(
             <div>
-                <p>{this.state.display()}</p>
+                <p>{this.display()}</p>
+                <p>{this.state.count}</p>
             </div>
         )
     }
 }
+
+export default Bomb;
