@@ -1,36 +1,50 @@
 import React, {Component} from 'react';
 
-class Bomb extends Component{
+class Bomb extends Component {
 
-    state ={
-        count: 0,
-    };
+    state = {
+        count: 0
+    }
 
-    let interval = setInterval(time, 1000)
+    componentDidMount(){
 
-    display()
-    {
-        const {count} = this.state
-        if(count % 2 === 0)
-        {
-            return 'tick'
+        this.setState({
+            count: this.state.count + 1
+        })
+
+        let interval = setInterval(timer(), 1000);
+
+        function timer() {
+            
+
+            console.log(count);
+            if (count % 2 === 0){
+                return count = 'tick';
+            } else if (count % 2 !== 0){
+                return count = 'tock'
+            } else if (count >= 8) {
+                return count = 'BOOM!!!'
+            } else {
+                return this.state.setState({
+                    count: this.state.count + 1
+                })
+            }
         }
-        else if(count % 2 != 0)
-        {
-            return 'tock'
-        }
-        else if (count >= 8){
-            clearInterval(this.interval)
-            return 'BOOM!!!'
-        }
+
     }
 
     render(){
 
         return(
             <div>
-                <p>{this.state.display()}</p>
+                <p>{this.state.count}</p>
             </div>
         )
+    };
+
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
 }
+
+export default Bomb;
