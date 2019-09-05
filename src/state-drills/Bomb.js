@@ -12,8 +12,7 @@ class Bomb extends Component{
             this.setState({
                 count: this.state.count + 1
             })
-            
-        }, 1000)
+         }, 1000)
     }
 
     componentWillUnmount(){
