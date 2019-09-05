@@ -1,6 +1,7 @@
 import React from 'react';
 import HelloWorld from './state-drills/HelloWorld.js';
-import Bomb from './state-drills/Bomb.js'
+import Bomb from './state-drills/Bomb.js';
+import RouletteGun from './state-drills/RouletteGun';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <header className="App-header">
         <HelloWorld />
         <Bomb />
+        <RouletteGun bulletInChamber={8}/>
       </header>
     </div>
   );
