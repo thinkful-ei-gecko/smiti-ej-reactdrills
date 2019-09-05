@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 
-class Bomb extends Component{
+class Bomb extends Component {
 
-    state ={
-        count: 0,
-    };
+    state = {
+        count: 0
+    }
+
 
     componentDidMount(){
         this.interval = setInterval(() => {
@@ -14,13 +15,10 @@ class Bomb extends Component{
             })
          }, 1000)
     }
-
-    componentWillUnmount(){
+    
+    componentWillUnmount() {
         clearInterval(this.interval)
     }
-
-
-
 
     display()
     {
@@ -28,18 +26,13 @@ class Bomb extends Component{
         if (count >= 8){
             clearInterval(this.interval)
             return 'BOOM!!!'
-        }
-        else if(count % 2 === 0)
-        {
+        } else if(count % 2 === 0) {
             return 'tick'
-        }
-        else
-        {
+        } else if(count % 2 !== 0) { 
             return 'tock'
         }
-        
-        
     }
+    
 
     render(){
 
@@ -49,7 +42,7 @@ class Bomb extends Component{
                 <p>{this.state.count}</p>
             </div>
         )
-    }
+    };
 }
 
 export default Bomb;
